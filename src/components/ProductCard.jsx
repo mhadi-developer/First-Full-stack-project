@@ -23,11 +23,12 @@ const {cart , setCart} = useContext(CartContext)
 //     .replace(/^-+|-+$/g, '');   // remove leading/trailing hyphens
 // }
 
-const handelCart = (p)=>{
+const handelAddToCart = (p)=>{
 
 let foundItem = cart.find((i)=>i.id==p.id)
 
 if(!foundItem){
+  p.quantity=1
  
   setCart([...cart, p])
 
@@ -45,7 +46,7 @@ if(!foundItem){
     <img src={props.product.image} className="card-img-top" alt="..."/>
   </div>
   <div className="card-body text-center">
-    <button href="#" className="btn btn-info w-100 mb-3" disabled={cart.find((i)=>i.id==props.product.id)?true:false} onClick={()=>handelCart(props.product)}>{cart.find((i)=>i.id==props.product.id)?'Added':'Add to Cart'}</button>
+    <button href="#" className="btn btn-info w-100 mb-3" disabled={cart.find((i)=>i.id==props.product.id)?true:false} onClick={()=>handelAddToCart(props.product)}>{cart.find((i)=>i.id==props.product.id)?'Added':'Add to Cart'}</button>
    <Link to={`/products/${props.product.slug}`} style={{textDecoration:"none", color:"black"}}>
     <h5 className="card-title">{props.product.title}</h5>
    </Link>
