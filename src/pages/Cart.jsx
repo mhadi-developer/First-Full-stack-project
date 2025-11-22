@@ -8,7 +8,7 @@ const Cart = () => {
   const handelDelete = (id) => {
     let updatedCart = cart.filter(c => c.id !== id)
     setCart(updatedCart)
-  }
+  }   //handelremove function
 
   const handelClearCart = () => {
     setCart([])
@@ -94,8 +94,7 @@ const Cart = () => {
               <td>
                 <button
                   className='btn btn-danger'
-                  onClick={() => handelDelete(item.id)}
-                >
+                  onClick={() => handelDelete(item.id)} >
                   <i className="bi bi-trash-fill"></i>
                 </button>
               </td>
@@ -105,7 +104,7 @@ const Cart = () => {
       </table>
 
       {/* Grand Total */}
-      <h3 className='mt-3'>Grand Total: {grandTotal}</h3>
+      <h3 className='mt-3'>Grand Total: {Math.ceil(grandTotal)}/-Rs</h3>
 
       <button className='btn btn-danger mt-2' onClick={handelClearCart}>Clear Cart</button>
     </div>
